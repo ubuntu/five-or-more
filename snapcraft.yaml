@@ -46,7 +46,5 @@ parts:
     meson-parameters: [--prefix=/snap/five-or-more/current/usr]
     organize:
       snap/five-or-more/current/usr: usr
-    build-packages:
-      - valac
-    stage-packages:
-      - libgnome-games-support-1-3
+    prime:
+      - -usr/lib/*/libwayland*
