@@ -1,5 +1,5 @@
 name: five-or-more
-version: git
+adopt-info: five-or-more
 summary: Remove colored balls from the board by forming lines
 description: |
  Five or More is the GNOME port of a once-popular computer game. Align five or
@@ -32,7 +32,6 @@ parts:
   five-or-more:
     source: https://gitlab.gnome.org/GNOME/five-or-more.git
     source-type: git
-    #source-branch: gnome-3-32
     override-pull: |
       snapcraftctl pull
       snapcraftctl set-version $(git describe --tags --abbrev=10)
