@@ -1,14 +1,5 @@
 name: five-or-more
 adopt-info: five-or-more
-summary: Remove colored balls from the board by forming lines
-description: |
- Five or More is the GNOME port of a once-popular computer game. Align five or
- more objects of the same color into a line to cause them to disappear and
- score points. Earn many more points by lining up as many objects as possible
- before clearing them.
-
- More objects appear after every turn. Play for as long as possible, until the
- board is completely full!
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core20
@@ -25,8 +16,6 @@ apps:
     command: usr/bin/five-or-more
     extensions: [ gnome-3-38 ]
     desktop: usr/share/applications/org.gnome.five-or-more.desktop
-    environment:
-      GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
 
 parts:
   five-or-more:
@@ -43,8 +32,7 @@ parts:
       cp ../src/data/icons/hicolor/256x256/org.gnome.five-or-more.png $SNAPCRAFT_PART_INSTALL/meta/gui/
       cp ../install/snap/five-or-more/current/usr/share/applications/org.gnome.five-or-more.desktop $SNAPCRAFT_PART_INSTALL/meta/gui/
     plugin: meson
-    meson-parameters: [--prefix=/snap/five-or-more/current/usr]
+    meson-parameters: [--prefix=/usr]
+    parse-info: [usr/share/metainfo/org.gnome.SwellFoop.appdata.xml]
     organize:
       snap/five-or-more/current/usr: usr
-    prime:
-      - -usr/lib/*/libwayland*
