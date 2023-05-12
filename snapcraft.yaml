@@ -22,6 +22,10 @@ parts:
     source: https://gitlab.gnome.org/GNOME/five-or-more.git
     source-type: git
     source-branch: gnome-3-32
+# ext:updatesnap
+#   version-format:
+#     lower-than: '3.33'
+#     no-9x-revisions: true
     override-pull: |
       snapcraftctl pull
       snapcraftctl set-version $(git describe --tags --abbrev=0)
