@@ -22,6 +22,7 @@ parts:
     source: https://gitlab.gnome.org/GNOME/five-or-more.git
     source-type: git
     source-tag: '3.32.3'
+    source-depth: 1
 # ext:updatesnap
 #   version-format:
 #     lower-than: '3.33'
