@@ -1,8 +1,13 @@
 name: five-or-more
 adopt-info: five-or-more
+summary: GNOME five-or-more
+description: |
+  Five or More is the GNOME port of the once popular Windows game called Color Lines.
+  The game's objective is to align as often as possible five or more objects of the
+  same color and shape causing them to disappear.
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
-base: core20
+base: core22
 
 slots:
   # for GtkApplication registration
@@ -14,7 +19,7 @@ slots:
 apps:
   five-or-more:
     command: usr/bin/five-or-more
-    extensions: [ gnome-3-38 ]
+    extensions: [ gnome ]
     desktop: usr/share/applications/org.gnome.five-or-more.desktop
 
 parts:
@@ -23,19 +28,15 @@ parts:
     source-type: git
     source-tag: '3.32.3'
     source-depth: 1
-# ext:updatesnap
-#   version-format:
-#     lower-than: '3.33'
-#     no-9x-revisions: true
     override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version $(git describe --tags --abbrev=0)
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0)
     override-build: |
-      sed -i.bak -e 's|Icon=org.gnome.five-or-more$|Icon=${SNAP}/meta/gui/org.gnome.five-or-more.png|g' $SNAPCRAFT_PART_SRC/data/org.gnome.five-or-more.desktop.in
-      snapcraftctl build
-      mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp ../src/data/icons/hicolor/256x256/org.gnome.five-or-more.png $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp ../install/snap/five-or-more/current/usr/share/applications/org.gnome.five-or-more.desktop $SNAPCRAFT_PART_INSTALL/meta/gui/
+      sed -i.bak -e 's|Icon=org.gnome.five-or-more$|Icon=${SNAP}/meta/gui/org.gnome.five-or-more.png|g' $CRAFT_PART_SRC/data/org.gnome.five-or-more.desktop.in
+      craftctl default
+      mkdir -p $CRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/256x256/org.gnome.five-or-more.png $CRAFT_PART_INSTALL/meta/gui/
+      cp ../install/usr/share/applications/org.gnome.five-or-more.desktop $CRAFT_PART_INSTALL/meta/gui/
     plugin: meson
     meson-parameters: [--prefix=/usr]
     parse-info: [usr/share/metainfo/org.gnome.SwellFoop.appdata.xml]
