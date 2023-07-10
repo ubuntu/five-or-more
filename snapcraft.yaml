@@ -9,6 +9,10 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core22
 
+layout:
+  /usr/share/five-or-more/themes:
+    bind: $SNAP/usr/share/five-or-more/themes
+
 slots:
   # for GtkApplication registration
   five-or-more:
