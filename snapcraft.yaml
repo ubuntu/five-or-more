@@ -7,7 +7,7 @@ description: |
   same color and shape causing them to disappear.
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
-base: core22
+base: core24
 
 layout:
   /usr/share/five-or-more/themes:
@@ -43,6 +43,10 @@ parts:
       cp ../install/usr/share/applications/org.gnome.five-or-more.desktop $CRAFT_PART_INSTALL/meta/gui/
     plugin: meson
     meson-parameters: [--prefix=/usr]
+    build-packages:
+      - libgnome-games-support-1-dev
+    stage-packages:
+      - libgnome-games-support-1-3
     parse-info: [usr/share/metainfo/org.gnome.SwellFoop.appdata.xml]
     organize:
       snap/five-or-more/current/usr: usr
