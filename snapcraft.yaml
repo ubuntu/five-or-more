@@ -30,7 +30,7 @@ parts:
   five-or-more:
     source: https://gitlab.gnome.org/GNOME/five-or-more.git
     source-type: git
-    source-tag: '3.32.3'
+    source-tag: '48.1'
     source-depth: 1
     override-pull: |
       craftctl default
