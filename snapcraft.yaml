@@ -40,7 +40,6 @@ parts:
       craftctl default
       mkdir -p $CRAFT_PART_INSTALL/meta/gui/
       cp ../src/data/icons/hicolor/256x256/org.gnome.five-or-more.png $CRAFT_PART_INSTALL/meta/gui/
-      cp ../install/usr/share/applications/org.gnome.five-or-more.desktop $CRAFT_PART_INSTALL/meta/gui/
     plugin: meson
     meson-parameters: [--prefix=/usr]
     build-packages:
